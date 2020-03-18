@@ -16,13 +16,13 @@ import edu.cnm.deepdive.quoteclient.view.QuoteRecyclerAdapter;
 public class QuotesFragment extends Fragment {
 
     private MainViewModel viewModel;
-    private RecyclerView quoteList;
+    private RecyclerView quotesList;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
         ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_quotes, container, false);
-        quoteList = root.findViewById(R.id.quote_list);
+        quotesList = root.findViewById(R.id.quotes_list);
         return root;
     }
 
@@ -33,7 +33,7 @@ public class QuotesFragment extends Fragment {
         viewModel.getQuotes().observe(getViewLifecycleOwner(), (quotes) -> {
      // TODO Attach any appropriate listeners
             QuoteRecyclerAdapter adapter = new QuoteRecyclerAdapter(getContext(), quotes);
-            quoteList.setAdapter(adapter);
+            quotesList.setAdapter(adapter);
         });
         viewModel.refreshQuotes();
     }
